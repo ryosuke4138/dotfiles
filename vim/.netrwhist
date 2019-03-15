@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/r.o./Documents/python/financial_group/bitmex/BitMEXUtility3.32'
+let g:netrw_dirhist_2='/Users/r.o./Documents/python/financial_group/bitmex'
+let g:netrw_dirhist_3='/Users/r.o./Documents/python/financial_group/bitmex/BitMEXUtility3.4'
+let g:netrw_dirhist_4='/Users/r.o./Documents/python/financial_group/bitmex/BitMEXUtility3.4/BitMEXUtility'
+let g:netrw_dirhist_5='/Users/r.o./Documents/python/financial_group/bitmex/BitMEXUtility3.32'
+let g:netrw_dirhist_6='/Users/r.o./Documents/python/financial_group/bitmex/BitMEXUtility3.32/BitMEXUtility'
+let g:netrw_dirhist_7='/Users/r.o./Documents/python/financial_group/bitmex/BitMEXUtility3.32'
+let g:netrw_dirhist_8='/Users/r.o./Documents/python/financial_group/bitmex/BitMEXUtility3.4/BitMEXUtility'
