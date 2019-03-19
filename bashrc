@@ -13,7 +13,10 @@
 
 
  # PS1="${yellow}ﾈ $blue¥W$magenta¥$(ps1_branch)¥n$yellow¥$$reset "
-export PS1='\[\e[1;34m\][\u@\h \W]\$\[\e[0m\] '
+# export PS1='\[\e[1;34m\][\u@\h \W]\$\[\e[0m\] '
+source ~/git-prompt.sh
+PS1='\[\033[40;1;32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[40;32m\]\h \[\033[1;36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[01m\] \[\033[0m\]\[\033[40;2;37m\]date +"%Y/%m/%d %p %H:%M:%S" \[\033[0m\]\n\\$ '
+export PS1=$PS1
 
 # Set terminal colors when launching screen
 alias tmux="TERM=screen-256color-bce tmux"
@@ -25,6 +28,7 @@ alias cp='cp -i'
 alias jp='jupyter notebook &'
 alias vs='open /Applications/visualstudiocode.app/'
 alias vi='nvim'
+alias relogin='exec $SHELL -l'
 #ls
 alias ll='ls -l -G'
 alias ls='ls -G'
@@ -86,11 +90,7 @@ ggl(){
 
 # add a blank line after each output
 function add_line {
-  if [[ -z "${PS1_NEWLINE_LOGIN}" ]]; then
-    PS1_NEWLINE_LOGIN = true
-  else
     printf '\n'
-  fi
 }
 
 PROMPT_COMMAND='add_line'
@@ -102,4 +102,13 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   source $(brew --prefix)/etc/bash_completion
 fi
 
+if type __git_ps1 > /dev/null 2>&1 ; then
+    PROMPT_COMMAND="__git_ps1 '\h:\W \u' '\\\$ '; $PROMPT_COMMAND"
+    GIT_PS1_SHOWDIRTYSTATE=true
+    GIT_PS1_SHOWSTASHSTATE=true
+    GIT_PS1_SHOWUNTRACKEDFILES=true
+    GIT_PS1_SHOWUPSTREAM="auto"
+    GIT_PS1_SHOWCOLORHINTS=true
+fi
 
+cd
