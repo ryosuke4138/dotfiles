@@ -14,7 +14,8 @@
 
  # PS1="${yellow}ﾈ $blue¥W$magenta¥$(ps1_branch)¥n$yellow¥$$reset "
 # export PS1='\[\e[1;34m\][\u@\h \W]\$\[\e[0m\] '
-source ~/git-prompt.sh
+source ~/dotfiles/git-prompt.sh
+source ~/dotfiles/.git-completion.bash
 PS1='\[\033[40;1;32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[40;32m\]\h \[\033[1;36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[01m\] \[\033[0m\]\[\033[40;2;37m\]date +"%Y/%m/%d %p %H:%M:%S" \[\033[0m\]\n\\$ '
 export PS1=$PS1
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash 
