@@ -19,6 +19,10 @@ source ~/dotfiles/.git-completion.bash
 PS1='\[\033[40;1;32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[40;32m\]\h \[\033[1;36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[01m\] \[\033[0m\]\[\033[40;2;37m\]date +"%Y/%m/%d %p %H:%M:%S" \[\033[0m\]\n\\$ '
 export PS1=$PS1
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash 
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
 
 # Set terminal colors when launching screen
 alias tmux="TERM=screen-256color-bce tmux"
