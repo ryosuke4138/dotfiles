@@ -84,10 +84,22 @@ ggl(){
     esac
 }
 
+# add a blank line after each output
+function add_line {
+  if [[ -z "${PS1_NEWLINE_LOGIN}" ]]; then
+    PS1_NEWLINE_LOGIN = true
+  else
+    printf '\n'
+  fi
+}
+
+PROMPT_COMMAND='add_line'
+
 # --------------------------------------
 #for bash_completion
 # --------------------------------------
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   source $(brew --prefix)/etc/bash_completion
 fi
+
 
