@@ -31,24 +31,16 @@ alias ls='ls -G'
 export LSCOLORS=GxfxcxdxFxegedabagacad
 
 # Change Directory
-alias de='cd ‾/Desktop'
-alias do='cd ‾/Documents'
-alias fse='cd /Users/r.o./Library/Mobile¥ Documents/com‾apple‾CloudDocs/fse2018/fall'
+alias de='cd ~/Desktop'
+alias do='cd ~/Documents'
 alias ..='cd ..'
-alias dl='cd ‾/Downloads'
-alias i='cd /Users/r.o./Library/Mobile¥ Documents/com‾apple‾CloudDocs'
-
-# Shortcut
-alias op='open *'
-alias bp='open -a sublime¥ text ‾/.bash_profile'
-alias br='open -a sublime¥ text ‾/.bashrc'
-alias sbp='source ‾/.bash_profile'
+alias dl='cd ~/Downloads'
+alias i='cd /Users/r.o./Library/Mobile\ Documents/com~apple~CloudDocs'
 
 # Open
 alias li='open /Applications/LINE.app/'
-alias gg='open -a google¥ chrome'
 alias word="open /Applications/word.app/"
-alias karabiner='open ‾/Applications/Karabiner-Elements.app/'
+alias karabiner='open /Applications/Karabiner-Elements.app/'
 alias od='open /Applications/OneDrive.app/'
 alias excel="open //Applications/excel.app/"
 alias sk='open /Applications/Slack.app/'
@@ -62,13 +54,10 @@ alias .="open ."
 
 #URL Open
 alias train='open https://transit.yahoo.co.jp/'
-alias trello='open https://trello.com/b/eaL5pgE4/task'
 alias mwd='open https://my.waseda.jp/'
 alias ng='open https://www.nationalgeographic.com/'
 alias sa='open https://www.scientificamerican.com//'
 alias dna='open https://www.rarejob.com/dna/'
-alias nyt='open https://www.nytimes.com/'
-alias winep='open http://waseda.summon.serialssolutions.com/#!/'
 
 alias tree='tree -NC -l "*.svn*" .'
 

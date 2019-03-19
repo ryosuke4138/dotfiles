@@ -45,7 +45,6 @@ nnoremap <C-p> 20k
 vnoremap <C-p> 20k
 
 " #####その他#####
-set clipboard=unnamed
 set number " 行番号の表示
 set title " terminalのtitleをset
 set ambiwidth=double " 文脈によって解釈が異なる全角文字の幅を、2に固定
