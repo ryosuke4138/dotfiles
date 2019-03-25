@@ -58,6 +58,17 @@ if IsTermux()
 	" C/C++
 		let g:ale_cpp_clang_options = '-Wall --std=c++11 '
 		let g:ale_c_clang_options = '-Wall --std=c99 '
+	" 保存時のみ実行する
+	let g:ale_lint_on_text_changed = 0
+	" 表示に関する設定
+	let g:airline#extensions#ale#open_lnum_symbol = '('
+	let g:airline#extensions#ale#close_lnum_symbol = ')'
+	let g:ale_echo_msg_format = '[%linter%]%code: %%s'
+	highlight link ALEErrorSign Tag
+	highlight link ALEWarningSign StorageClass
+	" Ctrl + kiで次の指摘へ、Ctrl + jで前の指摘へ移動
+	nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+	nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " deoplete-clang
 	let s:termux_root = '/data/data/com.termux/files'
@@ -278,3 +289,20 @@ endif
 	let g:syntastic_auto_loc_list = 1
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
+
+" LanguageClient-neovim
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>

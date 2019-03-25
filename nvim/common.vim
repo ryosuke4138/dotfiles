@@ -74,6 +74,12 @@
 	noremap <C-m> 20k
 	noremap <C-m> 20k
 
+" moving buffur
+	nnoremap <silent> [b :bprev<CR>
+	nnoremap <silent> ]b :bnext<CR>
+	nnoremap <silent> [B :bfirst<CR>
+	nnoremap <silent> ]B :blast<CR>
+
 " Tabs
 	set noexpandtab
 	set tabstop=4
@@ -146,3 +152,34 @@
 
 " replace ESC with jj
 	inoremap <silent> jj <ESC>:<C-u>w<CR>
+
+" http://inari.hatenablog.com/entry/2014/05/05/231307
+""""""""""""""""""""""""""""""
+" 全角スペースの表示
+""""""""""""""""""""""""""""""
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+endfunction
+
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '?')
+    augroup END
+    call ZenkakuSpace()
+endif
+""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""
+" 最後のカーソル位置を復元する
+""""""""""""""""""""""""""""""
+if has("autocmd")
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+endif
+""""""""""""""""""""""""""""""
+set statusline+=%{fugitive#statusline()}

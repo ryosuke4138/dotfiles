@@ -11,6 +11,18 @@
 #      ‾‾            ¥/__/         ¥/__/         ¥/__/         ¥|__|         ¥/__/
 #
 
+#  when a shell starts first, tmux do, too
+if [ $SHLVL = 1 ]; then
+  tmux
+fi
+# メモ帳の設定
+function sr () {
+    nvim --cmd 'cd ~/Scratches' ~/Scratches/`srf $1`
+}
+
+function srf () {
+    echo `date +%F``echo $1 | sed 's/^\(.\)/-\1/'`.md
+}
 
  # PS1="${yellow}ﾈ $blue¥W$magenta¥$(ps1_branch)¥n$yellow¥$$reset "
 # export PS1='\[\e[1;34m\][\u@\h \W]\$\[\e[0m\] '
@@ -23,9 +35,11 @@ git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
 git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD' #直近のcommitの情報を見る
 
 # Set terminal colors when launching screen
-alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="TERM=screen-256color tmux"
 
 # lazy alias
 alias c='clear'
