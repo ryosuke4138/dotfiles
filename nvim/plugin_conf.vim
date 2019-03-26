@@ -8,6 +8,16 @@
 " ╰────────────────────────────────╯
 
 
+" ******************** buftabs ********************
+let g:buftabs_only_basename=1
+let g:buftabs_in_statusline=1
+let g:buftabs_active_highlight_group="Visual"
+set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
+set laststatus=2
+
+" vim-javacomplete2
+	autocmd FileType java setlocal omnifunc=javacomplete#Complete
+	let g:JavaComplete_EnableDefaultMappings = 1
 " Airline
 if !IsTermux()
 	set laststatus=2

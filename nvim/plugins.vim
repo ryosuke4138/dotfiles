@@ -35,12 +35,12 @@ call plug#begin('~/.vim/bundle')
 	Plug 'junegunn/fzf'
 	Plug 'shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 	Plug 'deoplete-plugins/deoplete-jedi' "completion
-	Plug 'Shougo/neosnippet-snippets'
 	Plug 'scrooloose/nerdtree' "A tree explorer plugin
 	Plug 'scrooloose/syntastic' "Syntax checking hacks
 	Plug 'tomtom/tcomment_vim'
 	Plug 'tpope/vim-surround'
 	Plug 'wellle/targets.vim'
+	Plug 'artur-shaik/vim-javacomplete2'
 		Plug 'zchee/deoplete-clang'
 
 		if IsTermux()
@@ -73,44 +73,9 @@ set runtimepath+=/Users/r.o./.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('/Users/r.o./.cache/dein')
   call dein#begin('/Users/r.o./.cache/dein')
 
-  " Develop Plugins:
-  call dein#local(s:gopath.'/src/',  { 'frozen': 1, 'merged': 0 }, ['github.com/zchee/nvim-go'])
-  " call dein#local(s:gopath.'/src/',  { 'frozen': 1, 'merged': 0 }, ['github.com/zchee/nvim-kube', 'github.com/zchee/nvim-terraform', 'github.com/zchee/nvim-flycheck'])
-  call dein#local(s:srcpath.'/github.com/', { 'on_ft': ['fbs'], 'frozen': 1, 'merged': 0 }, ['zchee/vim-flatbuffers'])
-  call dein#local(s:srcpath.'/github.com/', { 'on_ft': ['gn'], 'frozen': 1, 'merged': 0 }, ['zchee/vim-gn'])
-  call dein#local(s:srcpath.'/github.com/', { 'on_ft': ['vgo'], 'frozen': 1, 'merged': 0 }, ['zchee/vim-vgo'])
-
-  " Dein:
-  call dein#add('Shougo/dein.vim')
-
-  " Deoplete:
-  call dein#add('Shougo/deoplete.nvim')
-  "" suorces
-  call dein#local(s:srcpath.'github.com/', { 'on_ft': ['go'], 'frozen': 1, 'merged': 0 }, ['deoplete-plugins/deoplete-go'])
-  call dein#local(s:srcpath.'github.com/', { 'on_ft': ['python', 'cython', 'pyrex'], 'frozen': 1, 'merged': 0 }, ['deoplete-plugins/deoplete-jedi'])
-  " call dein#local(s:srcpath.'github.com/', { 'on_ft': ['cmake'], 'frozen': 1, 'merged': 0 }, ['deoplete-plugins/deoplete-clang'])
-  " call dein#local(s:srcpath.'github.com/', { 'on_ft': ['dockerfile'], 'frozen': 1, 'merged': 0 }, ['deoplete-plugins/deoplete-docker'])
-  call dein#local(s:srcpath.'github.com/', { 'on_ft': ['gas', 'masm'], 'frozen': 1, 'merged': 0 }, ['deoplete-plugins/deoplete-asm'])
-  call dein#local(s:srcpath.'github.com/', { 'on_ft': ['zsh'], 'frozen': 1, 'merged': 0 }, ['deoplete-plugins/deoplete-zsh'])
-  call dein#add('Shougo/neco-vim', { 'on_ft': ['vim'] })
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/neosnippet.vim', { 'depends': ['neosnippet-snippets'] })
-  "" support
-  " call dein#add('Shougo/context_filetype.vim')
-  call dein#add('Shougo/neoinclude.vim', { 'on_ft': ['c', 'cpp', 'objc', 'objcpp', 'swift'] })
-  call dein#add('Shougo/echodoc.vim')
-  call dein#add('Shougo/neopairs.vim')
-  " call dein#add('Shougo/deoppet.nvim')
-
-  " Denite:
-  call dein#add('Shougo/denite.nvim')
-  "" dependency
-  " call dein#local(s:srcpath, { 'frozen': 1, 'merged': 1 }, ['github.com/nixprime/cpsm'])
-  "" suorces
-
   " LanguageClient:
   " call dein#add('autozimu/LanguageClient-neovim', { 'rev': 'next' })
-  call dein#local(s:srcpath, { 'frozen': 1, 'merged': 1 }, ['github.com/autozimu/LanguageClient-neovim'])
+  " call dein#local(s:srcpath, { 'frozen': 1, 'merged': 1 }, ['github.com/autozimu/LanguageClient-neovim'])
   " call dein#add('google/ijaas')
 
   " Filer:
@@ -138,8 +103,8 @@ if dein#load_state('/Users/r.o./.cache/dein')
   " call dein#add('mbbill/undotree')
 
   " Interface:
-  " call dein#add('vim-airline/vim-airline')
-  " call dein#add('vim-airline/vim-airline-themes', { 'depends': ['vim-airline/vim-airline'] })
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes', { 'depends': ['vim-airline/vim-airline'] })
   call dein#add('itchyny/lightline.vim')
   call dein#add('maximbaz/lightline-ale')
   call dein#add('mgee/lightline-bufferline')
@@ -156,7 +121,6 @@ if dein#load_state('/Users/r.o./.cache/dein')
 
   " Utility:
   call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-  call dein#local(s:gopath.'/src/',  { 'frozen': 1, 'merged': 0 }, ['github.com/utahta/trans.nvim'])
   call dein#add('cocopon/colorswatch.vim', { 'on_cmd': ['ColorSwatchGenerate'] })
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('haya14busa/dein-command.vim', { 'on_cmd': ['Dein'] })
@@ -175,19 +139,15 @@ if dein#load_state('/Users/r.o./.cache/dein')
   " call dein#add('sheerun/vim-polyglot')
   " call dein#add('wellle/targets.vim')
 
-  " Lifelog:
-  call dein#add('wakatime/vim-wakatime')
-
-  " -----------------------------------------------------------------------------
   " Language Plugin:
 
   "" Go:
   " call dein#add('fatih/vim-go', { 'on_ft': ['go'], 'lazy': 1 })
   " call dein#local(s:srcpath, { 'frozen': 1, 'merged': 0, 'on_ft': ['go', 'asm', 'gomod'] }, ['github.com/fatih/vim-go'])
   " call dein#local(s:srcpath, { 'on_ft': ['go', 'asm', 'gomod'], 'augroup': 'VimEnter', 'frozen': 1, 'merged': 1 }, ['github.com/zchee/vim-go'])
-  call dein#add('tweekmonster/hl-goimport.vim', { 'on_ft': ['go'] })
-  call dein#add('zchee/vim-go-slide')
-  call dein#add('rhysd/vim-goyacc')
+  " call dein#add('tweekmonster/hl-goimport.vim', { 'on_ft': ['go'] })
+  " call dein#add('zchee/vim-go-slide')
+  " call dein#add('rhysd/vim-goyacc')
   " call dein#local(s:gopath.'/src/',  { 'frozen': 1, 'merged': 0, 'on_ft': ['go'] }, ['github.com/garyburd/vigor'])
 
   "" C Family:
@@ -198,14 +158,11 @@ if dein#load_state('/Users/r.o./.cache/dein')
   call dein#add('keith/swift.vim')
   "" CMake:
   call dein#add('pboettch/vim-cmake-syntax')
-  "" LLVM TableGen:
-  call dein#local(s:srcpath, { 'on_ft': ['llvm'], 'frozen': 1, 'merged': 0, 'rtp': 'utils/vim' }, ['llvm.org/llvm'])
 
   "" Python:
   call dein#add('davidhalter/jedi-vim', {'lazy': 1, 'on_ft': ['python', 'cython', 'pyrex'] })
   " call dein#add('python-mode/python-mode')
   call dein#add('hynek/vim-python-pep8-indent')
-  call dein#local(s:srcpath, { 'on_ft': ['python', 'cython', 'pyrex'], 'frozen': 1, 'merged': 0 }, ['github.com/tweekmonster/impsort.vim'])
 
   "" Rust:
   call dein#add('rust-lang/rust.vim', { 'on_ft': ['rust'] })
@@ -215,8 +172,6 @@ if dein#load_state('/Users/r.o./.cache/dein')
 
   "" Kubernetes:
   call dein#add('andrewstuart/vim-kubernetes')
-
-  "" Lua:
 
   "" Serializer:
   call dein#add('uarun/vim-protobuf')
@@ -299,23 +254,19 @@ endif
 " -------------------------------------------------------------------------------------------------
 " Color:
 
-"" Global:
-highlight! TermCursor    gui=none      guifg=#222222    guibg=#ffffff
-highlight! TermCursorNC  gui=reverse   guifg=#222222    guibg=#ffffff
+""" Global:
+"highlight! TermCursor    gui=none      guifg=#222222    guibg=#ffffff
+"highlight! TermCursorNC  gui=reverse   guifg=#222222    guibg=#ffffff
 
-"" Go:
-" vim-go-stdlib:
-let g:go_highlight_error = 1
-let g:go_highlight_return = 0
 " #cc6666
-highlight! goStdlibErr        gui=Bold    guifg=#ff005f    guibg=None
-highlight! goString           gui=None    guifg=#92999f    guibg=None
-highlight! goComment          gui=None    guifg=#838c93    guibg=None
-highlight! goField            gui=Bold    guifg=#a1cbc5    guibg=None
-highlight! link               goStdlib          Statement
-highlight! link               goStdlibReturn    PreProc
-highlight! link               goImportedPkg     Statement
-highlight! link               goFormatSpecifier PreProc
+"highlight! goStdlibErr        gui=Bold    guifg=#ff005f    guibg=None
+"highlight! goString           gui=None    guifg=#92999f    guibg=None
+"highlight! goComment          gui=None    guifg=#838c93    guibg=None
+"highlight! goField            gui=Bold    guifg=#a1cbc5    guibg=None
+"highlight! link               goStdlib          Statement
+"highlight! link               goStdlibReturn    PreProc
+"highlight! link               goImportedPkg     Statement
+"highlight! link               goFormatSpecifier PreProc
 
 "" Python:
 highlight! pythonSpaceError   gui=None    guifg=#787f86    guibg=#787f86
@@ -345,36 +296,12 @@ highlight! doxygenBrief                gui=None guifg=#81a2be guibg=None
 highlight! doxygenSpecialMultilineDesc gui=None guifg=#81a2be guibg=None
 highlight! doxygenSpecialOnelineDesc   gui=None guifg=#81a2be guibg=None
 
-""" Denite:
-" guibg=#343941
-highlight! DeniteMatchedChar guifg=#85678f
-highlight! DeniteMatchedRange guifg=#f0c674
-highlight! DenitePreviewLine guifg=#85678f
-highlight! DeniteUnderlined guifg=#85678f
-
-"" ParenMatch:
-highlight! ParenMatch    gui=underline guifg=none guibg=#343941
-
-" -------------------------------------------------------------------------------------------------
-" Initialize Syntax:
-
-" silent! syntax   sync fromstart
-" silent! syntax   sync minlines=10000
-" silent! filetype on                " try to detect the filetype
-" silent! filetype plugin indent on  " enable loading the plugin file and indent file for specific file types
-
-" -------------------------------------------------------------------------------------------------
-
-" always jump to the last known cursor position
-"  https://github.com/neovim/neovim/blob/master/runtime/vimrc_example.vim
 function! s:autoJump()
   if line("'\"") > 1 && line("'\"") <= line("$") && &filetype != 'gitcommit' && &filetype != 'gitrebase'
     execute "silent! keepjumps normal! g`\"zz"
   endif
 endfunction
 
-"" automatically close window
-"  http://stackoverflow.com/questions/7476126/how-to-automatically-close-the-quick-fix-window-when-leaving-a-file
 function! s:autoClose()
   let s:ft = getbufvar(winbufnr(winnr()), "&filetype")
   if winnr('$') == 1 && s:ft == "qf" || s:ft == 'vaffle' || s:ft == 'nerdtree'
@@ -400,147 +327,6 @@ function! s:nvim_terminal_config()
     let s:num += 1
   endfor
 endfunction
-
-" -------------------------------------------------------------------------------------------------
-" Language Settings:
-
-" Go:
-"" Nvim Go:
-let g:go#build#appengine = v:false
-let g:go#build#autosave = v:true
-let g:go#build#is_not_gb = v:false
-" let g:go#build#flags = ['-race']
-let g:go#build#force = v:false
-let g:go#fmt#autosave  = v:true
-let g:go#fmt#mode = 'goimports'
-let g:go#fmt#goimports_local = ['github.com/zchee/nvim-go', 'github.com/kouzoh/jarvis']
-let g:go#guru#keep_cursor = {
-      \ 'callees'    : v:false,
-      \ 'callers'    : v:false,
-      \ 'callstack'  : v:false,
-      \ 'definition' : v:true,
-      \ 'describe'   : v:false,
-      \ 'freevars'   : v:false,
-      \ 'implements' : v:false,
-      \ 'peers'      : v:false,
-      \ 'pointsto'   : v:false,
-      \ 'referrers'  : v:false,
-      \ 'whicherrs'  : v:false
-      \ }
-let g:go#generate#test#subtest = v:true
-let g:go#guru#reflection = v:false
-let g:go#highlight#cgo = v:true
-let g:go#iferr#autosave = v:false
-let g:go#lint#golint#autosave = v:false
-let g:go#lint#golint#ignore = ['internal', 'vendor', 'pb', 'fbs']
-let g:go#lint#golint#mode = 'root'
-let g:go#lint#govet#autosave = v:false
-let g:go#lint#govet#flags = ['-v', '-all']
-let g:go#lint#govet#ignore = ['vendor', 'testdata', '_tmp']
-let g:go#lint#metalinter#autosave = v:false
-let g:go#lint#metalinter#autosave#tools = ['vet', 'golint']
-let g:go#lint#metalinter#deadline = '20s'
-let g:go#lint#metalinter#skip_dir = ['internal', 'vendor', 'testdata', '__*.go', '*_test.go']
-let g:go#lint#metalinter#tools = ['vet', 'golint']
-let g:go#rename#prefill = v:true
-let g:go#snippets#loaded = v:true
-let g:go#terminal#height = 120
-let g:go#terminal#start_insert = v:true
-let g:go#terminal#width = 120
-let g:go#test#all_package = v:false
-let g:go#test#autosave = v:false
-let g:go#test#flags = ['-v']
-let g:go#debug = v:true
-let g:go#debug#pprof = v:false
-""" highlight
-let g:go#highlight#terminal#test = 1
-
-
-"" Vim Go:
-let g:go_asmfmt_autosave = 0
-let g:go_auto_type_info = 0
-let g:go_autodetect_gopath = 0
-let g:go_def_mapping_enabled = 0
-let g:go_def_mode = 'godef'
-" let g:go_doc_command = 'godoc'
-let g:go_doc_max_height = 30
-" let g:go_doc_options = ''
-let g:go_fmt_autosave = 0
-let g:go_fmt_command = 'goimports'
-let g:go_fmt_experimental = 1
-" let g:go_loclist_height = 15
-" let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'gotype']
-let g:go_snippet_engine = 'neosnippet'
-let g:go_template_enabled = 0
-let g:go_term_enabled = 1
-let g:go_term_height = 30
-let g:go_term_width = 30
-let g:go_highlight_array_whitespace_error = 0    " default : 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_chan_whitespace_error = 0     " default : 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 0                    " default : 0
-let g:go_highlight_format_strings = 1
-let g:go_highlight_functions = 1                 " default : 0
-let g:go_highlight_generate_tags = 1             " default : 0
-let g:go_highlight_interfaces = 1                " default : 0
-let g:go_highlight_methods = 1                   " default : 0
-let g:go_highlight_operators = 1                 " default : 0
-let g:go_highlight_space_tab_error = 0           " default : 1
-let g:go_highlight_string_spellcheck = 0         " default : 1
-let g:go_highlight_structs = 1                   " default : 0
-let g:go_highlight_trailing_whitespace_error = 0 " default : 1
-
-
-" C CXX:
-"" VimCPPModern:
-let g:cpp_simple_highlight = 1  " Put all standard C and C++ keywords under Vim's highlight group `Statement` (affects both C and C++ files)
-let g:cpp_named_requirements_highlight = 1  " Enable highlighting of named requirements (C++20 library concepts)
-"" Rtags:
-let g:rtagsJumpStackMaxSize = 1000
-let g:rtagsMaxSearchResultWindowHeight = 15
-let g:rtagsMinCharsForCommandCompletion = 100
-let g:rtagsUseDefaultMappings = 0
-let g:rtagsUseLocationList = 1
-
-
-" Asm:
-let g:nasm_loose_syntax = 1
-let g:nasm_ctx_outside_macro = 1
-
-
-" Rust:
-let g:rust_bang_comment_leader = 1
-let g:rust_clip_command = 'pbcopy'
-let g:rust_conceal = 0
-let g:rust_conceal_mod_path = 0
-let g:rust_conceal_pub = 0
-let g:rust_fold = 1
-let g:rust_playpen_url = 'https://play.rust-lang.org/'
-let g:rust_recommended_style = 0
-let g:rust_shortener_url = 'https://is.gd/'
-let g:rustc_makeprg_no_percent = 1
-let g:rustc_path = '/usr/local/rust/cargo/bin/rustc'
-let g:rustfmt_autosave = 0
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = '/usr/local/rust/cargo/bin/rustfmt'
-let g:rustfmt_command = 'rustfmt'
-let g:rustfmt_fail_silently = 1
-
-
-"" Terraform:
-let g:terraform_commentstring = '//%s'
-let g:terraform_fmt_on_save = 1
-
-"" Yaml:
-
-
-" Binary:
-let g:vinarise_enable_auto_detect = 1
-if isdirectory('/usr/local/opt/binutils')
-  let g:vinarise_objdump_command = '/usr/local/opt/binutils/bin/gobjdump'
-endif
-
 
 " Markdown:
 " http://mattn.kaoriya.net/software/vim/20140523124903.html
@@ -576,9 +362,6 @@ let g:markdownfmt_options = ''
 let g:markdownfmt_autosave = 0
 let g:markdownfmt_fail_silently = 0
 
-" -------------------------------------------------------------------------------------------------
-" Plugin Setting:
-
 "" Deoplete:
 " core
 let g:deoplete#enable_at_startup = 1
@@ -593,12 +376,10 @@ let s:deoplete_custom_option = {
       \ 'ignore_case': v:true,
       \ 'ignore_sources': {
       \   '_': s:default_ignore_sources+['LanguageClient'],
-      \   'c': s:default_ignore_sources+['buffer', 'neosnippet'],
-      \   'cpp': s:default_ignore_sources+['buffer', 'neosnippet'],
+      \   'c': s:default_ignore_sources+['buffer'],
+      \   'cpp': s:default_ignore_sources+['buffer'],
       \   'dockerfile': s:default_ignore_sources,
-      \   'go': s:default_ignore_sources+['buffer', 'file', 'LanguageClient', 'neosnippet'],
       \   'javascript': s:default_ignore_sources,
-      \   'objc': s:default_ignore_sources+['buffer', 'neosnippet'],
       \   'python': s:default_ignore_sources,
       \   'rust': s:default_ignore_sources,
       \   'sh': s:default_ignore_sources,
@@ -632,8 +413,6 @@ call deoplete#custom#source('LanguageClient', 'disabled_syntaxes', ['Comment'])
 call deoplete#custom#source('LanguageClient', 'mark', '[LSP]')
 call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
 call deoplete#custom#source('LanguageClient', 'rank', 1000)
-call deoplete#custom#source('neosnippet', 'rank', 0)
-call deoplete#custom#source('neosnippet', 'disabled_syntaxes', ['Comment'])
 call deoplete#custom#source('vim', 'disabled_syntaxes', ['Comment'])
 
 " source
@@ -705,17 +484,6 @@ let g:echodoc#highlight_identifier = "Identifier"
 let g:echodoc#highlight_arguments = "Special"
 let g:echodoc#highlight_trailing = "Type"
 let g:echodoc#type = 'virtual'
-" neosnippet
-let g:neosnippet#data_directory = $XDG_CACHE_HOME . '/nvim/neosnippet'
-let g:neosnippet#disable_runtime_snippets = {}
-let g:neosnippet#disable_select_mode_mappings = 0
-let g:neosnippet#enable_auto_clear_markers = 1
-let g:neosnippet#enable_complete_done = 0
-let g:neosnippet#enable_completed_snippet = 0
-let g:neosnippet#expand_word_boundary = 1
-let g:neosnippet#snippets_directory = $XDG_CONFIG_HOME . '/nvim/neosnippets'
-let g:neosnippet_username = 'zchee'
-let g:neosnippet_author = 'Koichi Shiraishi'
 " debug
 " call deoplete#custom#option('profile', v:true)
 " call deoplete#enable_logging('DEBUG', $DEOPLETE_LOG_FILE)
@@ -842,50 +610,6 @@ function! s:lsp_set_schema(args)
 endfunction
 command! -nargs=* LSPYamlSetSchema call <SID>lsp_set_schema(<q-args>)
 
-"" Denite:
-if dein#is_sourced('denite.nvim')
-  call denite#custom#option('_', {
-        \ 'auto-highlight': v:true,
-        \ 'auto_accel': v:false,
-        \ 'empty': v:false,
-        \ 'highlight-matched-char': 'DeniteMatchedChar',
-        \ 'highlight-matched-range': 'DeniteMatchedRange',
-        \ 'highlight-preview-line': 'DenitePreviewLine',
-        \ 'mode': 'insert',
-        \ 'prompt': '>',
-        \ 'short_source_names': v:true,
-        \ 'sorter': 'sorter/word',
-        \ 'unique': v:true,
-        \ 'winheight': 30,
-        \ })
-  " call denite#custom#source('_', 'matchers', ['matcher/cpsm'])
-  let s:denite_file_rec_fd_command = ['fd', '--type=f', '--follow', '--hidden', '--full-path', '--color=never', '--exclude=.git', '']
-  call denite#custom#var('file_rec/fd', 'command', s:denite_file_rec_fd_command)
-  call denite#custom#var('grep/rg', 'command', ['rg'])
-  call denite#custom#var('grep/rg', 'default_opts', ['--mmap', '--threads=12', '--hidden', '--smart-case', '--vimgrep', '--no-ignore-vcs', '--no-heading', '--glob=!.git', '--glob=!node_modules'])
-  call denite#custom#var('grep/rg', 'recursive_opts', [])
-  call denite#custom#var('grep/rg', 'pattern_opt', ['--regexp'])
-  call denite#custom#var('grep/rg', 'separator', ['--'])
-  call denite#custom#var('grep/rg', 'final_opts', [])
-  call denite#custom#var('line/rg', 'command', ['rg', '--files', '--glob', '!.git', ''])
-
-  "" map
-  call denite#custom#map('insert', '<CR>', '<denite:do_action:default>', 'noremap')
-  call denite#custom#map('insert', '<C-v>', '<denite:multiple_mappings:denite:do_action:vsplit>', 'noremap')
-  call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
-
-  "" alias
-  call denite#custom#alias('source', 'file_rec/fd', 'file_rec')
-  call denite#custom#alias('source', 'grep/rg', 'grep')
-  call denite#custom#alias('source', 'line/rg', 'line')
-
-  "" filter
-  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-        \ [ '.git/', '.ropeproject/', '__pycache__/',
-        \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
-endif
-
 " Ale:
 let g:ale_cache_executable_check_failures = 1
 let g:ale_change_sign_column_color = 0
@@ -948,9 +672,6 @@ let g:ale_dockerfile_hadolint_use_docker = 'yes'
 let g:ale_dockerfile_hadolint_image = 'gcr.io/container-image/cloud-builders/hadolint:1.16.0'
 
 
-" Prototool:
-
-
 " Caw:
 let g:caw_hatpos_skip_blank_line = 0
 let g:caw_no_default_keymappings = 1
@@ -960,7 +681,6 @@ let g:caw_operator_keymappings = 0
 " LightLine:
 " https://donniewest.com/a-guide-to-basic-neovim-plugins
 let g:lightline = {}
-let g:lightline.colorscheme = 'hybrid'
 function! DeviconsGetFileTypeSymbol()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
@@ -1069,42 +789,38 @@ let g:autopep8_max_line_length = 99
 
 
 " ParenMatch:
-let g:cursorword = 0
-
-
-" Wakatime:
-let g:wakatime_PythonBinary = '/usr/local/opt/python3/bin/python3'
+"let g:cursorword = 0
 
 
 " SonicTemplate:
-let g:sonictemplate_vim_template_dir = [expand($XDG_CONFIG_HOME.'/nvim/template')]
+"let g:sonictemplate_vim_template_dir = [expand($XDG_CONFIG_HOME.'/nvim/template')]
 
 
 " Vaffle:
-let g:vaffle_auto_cd = 1
-let g:vaffle_force_delete = 1
-let g:vaffle_show_hidden_files = 1
-let g:vaffle_use_default_mappings = 1
+"let g:vaffle_auto_cd = 1
+"let g:vaffle_force_delete = 1
+"let g:vaffle_show_hidden_files = 1
+""let g:vaffle_use_default_mappings = 1
 
 
 " Editorconfig:
-let g:EditorConfig_core_mode = 'python_external'
+"let g:EditorConfig_core_mode = 'python_external'
 
 
 " Trans:
-let g:trans_lang_credentials_file = $XDG_CONFIG_HOME.'/gcloud/credentials/kouzoh-p-zchee/trans-nvim.json'
+"let g:trans_lang_credentials_file = $XDG_CONFIG_HOME.'/gcloud/credentials/kouzoh-p-zchee/trans-nvim.json'
 " let g:trans_lang_cutset = ['//', '#']
-let g:trans_lang_locale = 'ja'
+"let g:trans_lang_locale = 'ja'
 
 
 " OpenBrowser:
-let g:openbrowser_search_engines = {
-      \ 'google': 'http://google.com/search?q={query}&tbs=qdr:y',
-      \}
-let g:openbrowser_message_verbosity = 0
+"let g:openbrowser_search_engines = {
+"      \ 'google': 'http://google.com/search?q={query}&tbs=qdr:y',
+"      \}
+" let g:openbrowser_message_verbosity = 0
 
 " EasyAlign:
-let g:easy_align_ignore_groups = []
+" let g:easy_align_ignore_groups = []
 
 " NERDTree:
 let g:NERDTreeAutoDeleteBuffer = 1
@@ -1344,13 +1060,6 @@ endfunction
 command! TrimSpace call s:trimSpace()
 
 
-" EditInit:
-function! s:editTnit()
-  vsplit $XDG_CONFIG_HOME/nvim/init.vim
-endfunction
-command! EditInit call s:editTnit()
-
-
 " Lr:
 " <lr-args> to browse lr(1) results in a new window, press return to open file in new window.
 command! -nargs=* -complete=file Lr
@@ -1360,54 +1069,9 @@ command! -nargs=* -complete=file Lr
 " -------------------------------------------------------------------------------------------------
 " Command:
 
-" Terminal:
-command! -nargs=* Terminal split | terminal <args>
-command! -nargs=* TerminalV vsplit | terminal <args>
-
 " Capture:
 " http://qiita.com/sgur/items/9e243f13caa4ff294fa8
 command! -nargs=+ -complete=command Capture QuickRun -type vim -src <q-args>
 
 " Shfmt:
 command! -nargs=0 -bang -complete=command Shfmt %!shfmt -i 2
-
-" FormatJson:
-if has("python3")
-python3 << EOF
-import vim
-import json
-def Format_Json(indent, sort):
-    jsonStr = "\n".join(vim.current.buffer)
-    prettyJson = json.dumps(json.loads(jsonStr), sort_keys=sort, indent=indent, separators=(',', ': '), ensure_ascii=False)
-    prettyJson = prettyJson.encode('utf8')
-    vim.current.buffer[0:] = prettyJson.split(b'\n')
-
-def Format_Json_Select(start, end):
-    start = start - 1
-    jsonStr = "\n".join(vim.current.buffer[start:end])
-    prettyJson = json.dumps(json.loads(jsonStr), sort_keys=True, indent=indent, separators=(',', ': '), ensure_ascii=False)
-    prettyJson = prettyJson.encode('utf8')
-    vim.current.buffer[start:end] = prettyJson.split(b'\n')
-
-def Format_JsonSchema(indent, sort):
-    jsonStr = "\n".join(vim.current.buffer)
-    prettyJson = json.dumps(json.loads(jsonStr), sort_keys=sort, indent=indent, separators=(',', ': '), ensure_ascii=False)
-    prettyJson = prettyJson.encode('utf8')
-    vim.current.buffer[0:] = prettyJson.split(b'\n')
-
-def Format_JsonSchema_Select(start, end):
-    start = start - 1
-    jsonStr = "\n".join(vim.current.buffer[start:end])
-    prettyJson = json.dumps(json.loads(jsonStr), sort_keys=sort, indent=2, separators=(',', ': '), ensure_ascii=False)
-    prettyJson = prettyJson.encode('utf8')
-    vim.current.buffer[start:end] = prettyJson.split(b'\n')
-EOF
-  command! -bang -bar -complete=command -nargs=* -range=% FormatJson :python3 Format_Json(<args>)
-  command! -bang -bar -complete=command -nargs=* -range=% FormatJsonSelect :python3 Format_Json_Select(<line1>, <line2>)
-
-  command! -bang -bar -complete=command -nargs=* -range=% FormatJsonSchema :python3 Format_JsonSchema(<args>)
-  command! -bang -bar -complete=command -nargs=* -range=% FormatJsonSchemaSelect :python3 Format_JsonSchema_Select(<line1>, <line2>)
-else
-  command! -nargs=0 -bang -complete=command FormatJson %!python3 -m json.tool
-endif
-
