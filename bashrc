@@ -30,7 +30,7 @@ source ~/dotfiles/git-prompt.sh
 source ~/dotfiles/.git-completion.bash
 PS1='\[\033[40;1;32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[40;32m\]\h \[\033[1;36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[01m\] \[\033[0m\]\[\033[40;2;37m\]date +"%Y/%m/%d %p %H:%M:%S" \[\033[0m\]\n\\$ '
 export PS1=$PS1
-source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash 
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
@@ -77,12 +77,14 @@ alias am="open /Applications/amazon_music.app/"
 alias .="open ."
 
 #URL Open
+alias gg='open -a google\ chrome'
 alias train='open https://transit.yahoo.co.jp/'
 alias mwd='open https://my.waseda.jp/'
 alias ng='open https://www.nationalgeographic.com/'
 alias sa='open https://www.scientificamerican.com//'
 alias dna='open https://www.rarejob.com/dna/'
 
+# NERDtree
 alias tree='tree -NC -l "*.svn*" .'
 
 # for postgreSQL to login as postgre
@@ -132,3 +134,7 @@ if type __git_ps1 > /dev/null 2>&1 ; then
 fi
 
 cd
+
+# cuda
+export PATH=/Developer/NVIDIA/CUDA-9.2/bin:$PATH
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-9.2/lib:$DYLD_LIBRARY_PATH
