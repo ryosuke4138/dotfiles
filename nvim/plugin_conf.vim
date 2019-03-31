@@ -18,28 +18,29 @@ set laststatus=2
 " vim-javacomplete2
 	autocmd FileType java setlocal omnifunc=javacomplete#Complete
 	let g:JavaComplete_EnableDefaultMappings = 1
-" Airline
-if !IsTermux()
-	set laststatus=2
 
-	" Bottom row
-		if !exists('g:airline_symbols')
-			let g:airline_symbols = {}
-		endif
-		let g:airline_symbols.linenr = '≣'
-		let g:airline#extensions#keymap#enabled = 0
-		let g:airline_detect_spelllang = 0
-		set noshowmode
-
-	" Tabs
-		let g:airline#extensions#tabline#enabled = 1
-		let g:airline#extensions#tabline#fnamemod = ':t'
-		let g:airline#extensions#tabline#left_sep = ''
-		let g:airline#extensions#tabline#left_alt_sep = ''
-
+" " Airline
+" " if !IsTermux()
+" 	set laststatus=2
+"
+" 	" Bottom row
+		" if !exists('g:airline_symbols')
+		" 	let g:airline_symbols = {}
+		" endif
+		" let g:airline_symbols.linenr = '≣'
+		" let g:airline#extensions#keymap#enabled = 0
+	" 	let g:airline_detect_spelllang = 0
+	" 	set noshowmode
+    "
+	" " Tabs
+	" 	let g:airline#extensions#tabline#enabled = 1
+		" let g:airline#extensions#tabline#fnamemod = ':t'
+		" let g:airline#extensions#tabline#left_sep = ''
+		" let g:airline#extensions#tabline#left_alt_sep = ''
+        "
 	" Theme
-		let g:airline_powerline_fonts = 1
-endif
+		" let g:airline_powerline_fonts = 1
+" endif
 
 " DelimitMate
 	let delimitMate_expand_cr = 1
@@ -316,3 +317,19 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_format = {
+	\ '0': '0 ',
+	\ '1': '1 ',
+	\ '2': '2 ',
+	\ '3': '3 ',
+	\ '4': '4 ',
+	\ '5': '5 ',
+	\ '6': '6 ',
+	\ '7': '7 ',
+	\ '8': '8 ',
+	\ '9': '9 '
+	\}

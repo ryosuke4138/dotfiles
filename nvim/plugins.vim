@@ -105,10 +105,11 @@ if dein#load_state('/Users/r.o./.cache/dein')
   " Interface:
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes', { 'depends': ['vim-airline/vim-airline'] })
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('maximbaz/lightline-ale')
-  call dein#add('mgee/lightline-bufferline')
-  call dein#add('ryanoasis/vim-devicons')
+  " call dein#add('itchyny/lightline.vim')
+  " call dein#add('maximbaz/lightline-ale')
+  " call dein#add('mgee/lightline-bufferline')
+  " call dein#add('ryanoasis/vim-devicons')
+  set encoding=UTF-8
 
   " Debugger:
   call dein#add('sakhnik/nvim-gdb')
@@ -840,6 +841,8 @@ let g:NERDTreeSortHiddenFirst = 1
 " Previous use plugins
 
 " Airline:
+" Java formatter jar file name. Use by Autoformat
+  let g:google_java_formatter = 'google-java-format-1.5-all-deps.jar'
 " let g:airline#extensions#ale#enabled = 1
 " let g:airline#extensions#ale#error_symbol = 'E:'
 " let g:airline#extensions#ale#warning_symbol = 'W:'
@@ -873,12 +876,12 @@ let g:NERDTreeSortHiddenFirst = 1
 " let g:airline_inactive_collapse = 0
 " let g:airline_powerline_fonts = 1
 " let g:airline_skip_empty_sections = 1
-" let g:airline_theme = 'hybridline'
+" " let g:airline_theme = 'hybridline'
 " if dein#is_sourced('vim-airline')
 "   let g:airline_section_c = airline#section#create(['%<', 'readonly', '%{expand(''%:p'')}'])
 " endif
-
-" -------------------------------------------------------------------------------------------------
+"
+" " -------------------------------------------------------------------------------------------------
 " Functions:
 
 " Filetye Execute:
