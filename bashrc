@@ -142,4 +142,4 @@ export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-9.2/lib:$DYLD_LIBRARY_PATH
 
 
 # java
-set JAVA_TOOL_OPTIONS=-Dfile.encoding=utf8
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=utf8
