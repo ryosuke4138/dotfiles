@@ -78,6 +78,7 @@ alias .="open ."
 
 #URL Open
 alias gg='open -a google\ chrome'
+alias ggp='open https://www.google.co.jp/imghp?hl=ja&tab=ri&authuser=0'
 alias train='open https://transit.yahoo.co.jp/'
 alias mwd='open https://my.waseda.jp/'
 alias ng='open https://www.nationalgeographic.com/'
@@ -138,3 +139,7 @@ cd
 # cuda
 export PATH=/Developer/NVIDIA/CUDA-9.2/bin:$PATH
 export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-9.2/lib:$DYLD_LIBRARY_PATH
+
+
+# java
+set JAVA_TOOL_OPTIONS=-Dfile.encoding=utf8

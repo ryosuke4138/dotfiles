@@ -954,6 +954,13 @@ function! s:get_syn_attr(synid)
   return s:attr
 endfunction
 " return syntax information
+  " Java
+  let g:syntastic_java_javac_config_file_enabled = 1
+  let g:syntastic_java_javac_config_file = "$HOME/.syntastic_javac_config"
+  "disable automatic check at file open/close
+  let g:syntastic_check_on_open=0
+  let g:syntastic_check_on_wq=0
+
 function! s:get_syn_info(cword)
   let s:baseSyn = s:get_syn_attr(s:get_syn_id(0))
   let s:baseSynInfo = "name: " . s:baseSyn.name .

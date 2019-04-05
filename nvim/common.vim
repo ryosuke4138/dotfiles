@@ -61,7 +61,7 @@
 	noremap <C-k> <C-w>k
 	noremap <C-l> <C-w>l
 	" if has('nvim')
-	"  nmap <BS> <C-W>h
+	 " nmap <BS> <C-W>h
 	" endif
 
 " keyboard
@@ -70,8 +70,6 @@
 	noremap j gj
 	noremap k gk
 	noremap <C-n> 20j
-	noremap <C-n> 20j
-	noremap <C-m> 20k
 	noremap <C-m> 20k
 
 " moving buffur
