@@ -74,6 +74,8 @@ if dein#load_state('/Users/r.o./.cache/dein')
   call dein#begin('/Users/r.o./.cache/dein')
 
   " LanguageClient:
+			" sc.nextDouble();
+			" sc.nextDouble();
   " call dein#add('autozimu/LanguageClient-neovim', { 'rev': 'next' })
   " call dein#local(s:srcpath, { 'frozen': 1, 'merged': 1 }, ['github.com/autozimu/LanguageClient-neovim'])
   " call dein#add('google/ijaas')

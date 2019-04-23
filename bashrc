@@ -24,7 +24,7 @@ function srf () {
     echo `date +%F``echo $1 | sed 's/^\(.\)/-\1/'`.md
 }
 
- # PS1="${yellow}ﾈ $blue¥W$magenta¥$(ps1_branch)¥n$yellow¥$$reset "
+# PS1="${yellow}ﾈ $blue¥W$magenta¥$(ps1_branch)¥n$yellow¥$$reset "
 # export PS1='\[\e[1;34m\][\u@\h \W]\$\[\e[0m\] '
 source ~/dotfiles/git-prompt.sh
 source ~/dotfiles/.git-completion.bash
@@ -66,12 +66,12 @@ alias li='open /Applications/LINE.app/'
 alias word="open /Applications/word.app/"
 alias karabiner='open /Applications/Karabiner-Elements.app/'
 alias od='open /Applications/OneDrive.app/'
-alias excel="open //Applications/excel.app/"
+alias excel="open /Applications/excel.app/"
 alias sk='open /Applications/Slack.app/'
 alias nt='open /Applications/Notes.app/'
 alias en='open /Applications/Evernote.app/'
 alias sp="open /Applications/sp/"
-alias pp="open /Applications/powerpoint.app/"
+alias powerpoint="open /Applications/powerpoint.app/"
 alias pv="open /Applications/Preview.app/"
 alias am="open /Applications/amazon_music.app/"
 alias .="open ."
@@ -126,7 +126,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 if type __git_ps1 > /dev/null 2>&1 ; then
-    PROMPT_COMMAND="__git_ps1 '\h:\W \u' '\\\$ '; $PROMPT_COMMAND"
+    PROMPT_COMMAND="__git_ps1 '\W' '\\\$ '; $PROMPT_COMMAND"
     GIT_PS1_SHOWDIRTYSTATE=true
     GIT_PS1_SHOWSTASHSTATE=true
     GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -137,9 +137,12 @@ fi
 cd
 
 # cuda
-export PATH=/Developer/NVIDIA/CUDA-9.2/bin:$PATH
-export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-9.2/lib:$DYLD_LIBRARY_PATH
+export PATH="/Developer/NVIDIA/CUDA-9.2/bin:$PATH"
+export DYLD_LIBRARY_PATH="/Developer/NVIDIA/CUDA-9.2/lib:$DYLD_LIBRARY_PATH"
 
 
 # java
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=utf8
+
+# Google Translation API
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/r.o./Documents/unipro/shueisha/My First Project-0c37b7813938.json"

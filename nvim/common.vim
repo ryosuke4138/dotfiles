@@ -9,7 +9,7 @@
 
 " Common Settings
 	set fileformats=unix,dos,mac
-	set fileencodings=utf-8,sjis
+	set fileencodings=utf-8,sjis,cp932,euc-jp
 	filetype plugin indent on
 	set encoding=utf-8
 	set mouse=a
@@ -120,7 +120,7 @@
 		autocmd TermOpen * startinsert
 	augroup end
 
-	set clipboard=unnamed
+	set clipboard+=unnamed,unnamedplus
 	set number
 	set title
 	set ruler
