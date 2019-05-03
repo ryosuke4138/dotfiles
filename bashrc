@@ -28,8 +28,6 @@ function srf () {
 # export PS1='\[\e[1;34m\][\u@\h \W]\$\[\e[0m\] '
 source ~/dotfiles/git-prompt.sh
 source ~/dotfiles/.git-completion.bash
-PS1='\[\033[40;1;32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[40;32m\]\h \[\033[1;36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[01m\] \[\033[0m\]\[\033[40;2;37m\]date +"%Y/%m/%d %p %H:%M:%S" \[\033[0m\]\n\\$ '
-export PS1=$PS1
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 git config --global alias.co checkout
 git config --global alias.br branch
@@ -46,6 +44,7 @@ alias c='clear'
 alias my='mv -i'
 alias cp='cp -i'
 alias jp='jupyter notebook &'
+# alias pip='pip3'
 alias vs='open /Applications/visualstudiocode.app/'
 alias vi='nvim'
 alias relogin='exec $SHELL -l'
@@ -69,8 +68,6 @@ alias od='open /Applications/OneDrive.app/'
 alias excel="open /Applications/excel.app/"
 alias sk='open /Applications/Slack.app/'
 alias nt='open /Applications/Notes.app/'
-alias en='open /Applications/Evernote.app/'
-alias sp="open /Applications/sp/"
 alias powerpoint="open /Applications/powerpoint.app/"
 alias pv="open /Applications/Preview.app/"
 alias am="open /Applications/amazon_music.app/"
@@ -78,12 +75,8 @@ alias .="open ."
 
 #URL Open
 alias gg='open -a google\ chrome'
-alias ggp='open https://www.google.co.jp/imghp?hl=ja&tab=ri&authuser=0'
 alias train='open https://transit.yahoo.co.jp/'
 alias mwd='open https://my.waseda.jp/'
-alias ng='open https://www.nationalgeographic.com/'
-alias sa='open https://www.scientificamerican.com//'
-alias dna='open https://www.rarejob.com/dna/'
 
 # NERDtree
 alias tree='tree -NC -l "*.svn*" .'
@@ -126,7 +119,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 if type __git_ps1 > /dev/null 2>&1 ; then
-    PROMPT_COMMAND="__git_ps1 '\W' '\\\$ '; $PROMPT_COMMAND"
+    PROMPT_COMMAND="__git_ps1 '\W' ' \\\$ '; $PROMPT_COMMAND"
     GIT_PS1_SHOWDIRTYSTATE=true
     GIT_PS1_SHOWSTASHSTATE=true
     GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -145,4 +138,4 @@ export DYLD_LIBRARY_PATH="/Developer/NVIDIA/CUDA-9.2/lib:$DYLD_LIBRARY_PATH"
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=utf8
 
 # Google Translation API
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/r.o./Documents/unipro/shueisha/My First Project-0c37b7813938.json"
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/r.o./Documents/pluszero/shueisha/My First Project-0c37b7813938.json"
