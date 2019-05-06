@@ -60,7 +60,8 @@ alias ..='cd ..'
 alias dl='cd ~/Downloads'
 alias i='cd /Users/r.o./Library/Mobile\ Documents/com~apple~CloudDocs'
 
-# Open
+# Open app with alias
+alias ij='open /Applications/IntelliJ\ IDEA\ CE.app/'
 alias li='open /Applications/LINE.app/'
 alias word="open /Applications/word.app/"
 alias karabiner='open /Applications/Karabiner-Elements.app/'
