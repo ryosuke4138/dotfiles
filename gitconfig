@@ -8,3 +8,5 @@
 [user]
 	name = Ryosuke Okamae
 	email = okamae.ryosuke@unipro.jp
+[http]
+	postBuffer = 2M

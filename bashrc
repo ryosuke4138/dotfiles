@@ -12,9 +12,9 @@
 #
 
 #  when a shell starts first, tmux do, too
-if [ $SHLVL = 1 ]; then
-  tmux
-fi
+#if [ $SHLVL = 1 ]; then
+#  tmux
+#fi
 # メモ帳の設定
 function sr () {
     nvim --cmd 'cd ~/Scratches' ~/Scratches/`srf $1`
@@ -25,7 +25,6 @@ function srf () {
 }
 
 # PS1="${yellow}ﾈ $blue¥W$magenta¥$(ps1_branch)¥n$yellow¥$$reset "
-# export PS1='\[\e[1;34m\][\u@\h \W]\$\[\e[0m\] '
 source ~/dotfiles/git-prompt.sh
 source ~/dotfiles/.git-completion.bash
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
@@ -39,54 +38,42 @@ git config --global alias.last 'log -1 HEAD' #直近のcommitの情報を見る
 # Set terminal colors when launching screen
 alias tmux="TERM=screen-256color tmux"
 
-# lazy alias
 alias c='clear'
 alias my='mv -i'
 alias cp='cp -i'
 alias jp='jupyter notebook &'
-# alias pip='pip3'
-alias vs='open /Applications/visualstudiocode.app/'
 alias vi='nvim'
 alias relogin='exec $SHELL -l'
+
 #ls
-alias ll='ls -l -G'
-alias ls='ls -G'
-export LSCOLORS=GxfxcxdxFxegedabagacad
+alias ls='lsd -F'
 
 # Change Directory
-alias de='cd ~/Desktop'
-alias do='cd ~/Documents'
 alias ..='cd ..'
+alias do='cd ~/Documents'
 alias dl='cd ~/Downloads'
 alias i='cd /Users/r.o./Library/Mobile\ Documents/com~apple~CloudDocs'
 
 # Open app with alias
-alias ij='open /Applications/IntelliJ\ IDEA\ CE.app/'
 alias li='open /Applications/LINE.app/'
 alias word="open /Applications/word.app/"
-alias karabiner='open /Applications/Karabiner-Elements.app/'
-alias od='open /Applications/OneDrive.app/'
 alias excel="open /Applications/excel.app/"
-alias sk='open /Applications/Slack.app/'
+alias slack='open /Applications/Slack.app/'
 alias nt='open /Applications/Notes.app/'
-alias powerpoint="open /Applications/powerpoint.app/"
 alias pv="open /Applications/Preview.app/"
-alias am="open /Applications/amazon_music.app/"
 alias .="open ."
 
 #URL Open
-alias gg='open -a google\ chrome'
 alias train='open https://transit.yahoo.co.jp/'
 alias mwd='open https://my.waseda.jp/'
 
-# NERDtree
-alias tree='tree -NC -l "*.svn*" .'
-
 # for postgreSQL to login as postgre
 # alias psql='psql -U postgres -h localhost -W'
+
 # --------------------------------------
 # Google search from terminal
 # --------------------------------------
+alias gg='open -a google\ chrome'
 ggl(){
     if [ $(echo $1 | egrep "^-[cfs]$") ]; then
         local opt="$1"
@@ -109,7 +96,6 @@ ggl(){
 function add_line {
     printf '\n'
 }
-
 PROMPT_COMMAND='add_line'
 
 # --------------------------------------
@@ -119,6 +105,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   source $(brew --prefix)/etc/bash_completion
 fi
 
+export PS1='\[\033[1;31m\]\w\[\033[1;39m\]\n$
 if type __git_ps1 > /dev/null 2>&1 ; then
     PROMPT_COMMAND="__git_ps1 '\W' ' \\\$ '; $PROMPT_COMMAND"
     GIT_PS1_SHOWDIRTYSTATE=true
@@ -127,7 +114,13 @@ if type __git_ps1 > /dev/null 2>&1 ; then
     GIT_PS1_SHOWUPSTREAM="auto"
     GIT_PS1_SHOWCOLORHINTS=true
 fi
+$(__git_ps1)\[\033[01m\] \$ '
 
+# display git branch on bash prompt
+# export PS1='\[\033[1;34m\]\w\[\033[1;39m\]\n$(__git_ps1)\[\033[00m\] \$ '
+export PS1='\[\033[1;34m\]\w\[\033[1;39m\]\n\[\033[33m\]$(__git_ps1)\[\033[00m\] \$ '
+
+# go to home directory when start bash
 cd
 
 # cuda
@@ -140,3 +133,31 @@ export JAVA_TOOL_OPTIONS=-Dfile.encoding=utf8
 
 # Google Translation API
 export GOOGLE_APPLICATION_CREDENTIALS="/Users/r.o./Documents/pluszero/shueisha/My First Project-0c37b7813938.json"
+
+#spark
+export SPARK_HOME=/usr/local/spark/spark-1.6.2-bin-hadoop2.6
+export PATH=$PATH:$SPARK_HOME/bin
+#jupyter spark
+export PYSPARK_PYTHON=$PYENV_ROOT/shims/python #環境に合わせてパスを合わせること
+export PYSPARK_DRIVER_PYTHON=$PYENV_ROOT/shims/jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
+
+# export http_proxy=http://proxy.hoge:8080
+# export HTTP_PROXY=$http_proxy
+# export https_proxy=$http_proxy
+# export HTTPS_PROXY=$http_proxy
+# export ftp_proxy=$http_proxy
+# export FTP_PROXY=$http_proxy
+# export no_proxy=.local,localhost,127.0.0.1
+# export use_proxy=yes
+export http_proxy=
+export https_proxy=
+export ftp_proxy=
+use_proxy=
+FTP_PROXY=
+HTTPS_PROXY=
+no_proxy=
+HTTP_PROXY=
+
+# # brewでインストールしたtexのpath
+export PATH=/Library/TeX/texbin:${PATH}
